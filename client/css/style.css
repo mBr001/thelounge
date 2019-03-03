@@ -601,10 +601,8 @@ background on hover (unless active) */
 }
 
 /* Remove background on hovered/active channel when sorting/drag-and-dropping */
-#sidebar .ui-sortable-helper .chan.active, /* Networks */
-#sidebar .ui-sortable-helper .chan:hover,
-#sidebar .chan.ui-sortable-helper.active, /* Channels */
-#sidebar .chan.ui-sortable-helper:hover {
+#sidebar .ui-sortable-active .chan,
+#sidebar .ui-sortable-active .chan:hover {
 	background-color: transparent;
 }
 
@@ -632,15 +630,21 @@ background on hover (unless active) */
 	padding: 8px 14px;
 }
 
-#sidebar .network-placeholder,
-#sidebar .chan-placeholder {
-	border: 1px dashed #99a2b4;
-	border-radius: 6px;
-	margin: -1px;
+#sidebar .chan,
+#sidebar .network {
+	position: relative;
 }
 
-#sidebar .network-placeholder {
-	margin-bottom: 29px;
+#sidebar .network-placeholder::after,
+#sidebar .chan-placeholder::after {
+	background: var(--button-color);
+	content: " ";
+	display: block;
+	position: absolute;
+	left: 0;
+	top: -4px;
+	width: 100%;
+	height: 4px;
 }
 
 #sidebar .chan.lobby {

@@ -362,16 +362,9 @@ function initializeClient(socket, client, token, lastMessage) {
 				const p1 = data.new_password;
 				const p2 = data.verify_password;
 
-				if (typeof p1 === "undefined" || p1 === "") {
+				if (typeof p1 === "undefined" || p1 === "" || p1 !== p2) {
 					socket.emit("change-password", {
-						error: "Please enter a new password",
-					});
-					return;
-				}
-
-				if (p1 !== p2) {
-					socket.emit("change-password", {
-						error: "Both new password fields must match",
+						error: "",
 					});
 					return;
 				}
@@ -381,7 +374,7 @@ function initializeClient(socket, client, token, lastMessage) {
 					.then((matching) => {
 						if (!matching) {
 							socket.emit("change-password", {
-								error: "The current password field does not match your account password",
+								error: "password_incorrect",
 							});
 							return;
 						}
@@ -392,9 +385,9 @@ function initializeClient(socket, client, token, lastMessage) {
 							const obj = {};
 
 							if (success) {
-								obj.success = "Successfully updated your password";
+								obj.success = true;
 							} else {
-								obj.error = "Failed to update your password";
+								obj.error = "update_failed";
 							}
 
 							socket.emit("change-password", obj);

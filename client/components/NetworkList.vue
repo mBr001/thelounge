@@ -11,7 +11,7 @@
 		:disabled="isSortingEnabled"
 		handle=".lobby"
 		draggable=".network"
-		ghost-class="network-placeholder"
+		ghostClass="network-placeholder"
 		group="networks"
 		class="networks"
 		@change="onNetworkSort"
@@ -47,7 +47,7 @@
 
 			<Draggable
 				draggable=".chan"
-				ghost-class="chan-placeholder"
+				ghostClass="chan-placeholder"
 				:group="network.uuid"
 				:disabled="isSortingEnabled"
 				:list="network.channels"

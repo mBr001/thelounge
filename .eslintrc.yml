@@ -95,6 +95,10 @@ rules:
   vue/html-closing-bracket-newline: error
   vue/multiline-html-element-content-newline: off
   vue/singleline-html-element-content-newline: off
+  vue/attribute-hyphenation:
+    - error
+    - always
+    - ignore: [ghostClass]
 
 plugins:
   - vue

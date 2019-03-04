@@ -8,13 +8,11 @@
 	<Draggable
 		v-else
 		:list="networks"
-		:options="{
-			handle: '.lobby',
-			draggable: '.network',
-			ghostClass: 'network-placeholder',
-			group: 'networks',
-			disabled: isSortingEnabled
-		}"
+		:disabled="isSortingEnabled"
+		handle=".lobby"
+		draggable=".network"
+		ghost-class="network-placeholder"
+		group="networks"
 		class="networks"
 		@change="onNetworkSort"
 		@start="onDragStart"
@@ -48,12 +46,10 @@
 			/>
 
 			<Draggable
-				:options="{
-					draggable: '.chan',
-					ghostClass: 'chan-placeholder',
-					group: network.uuid,
-					disabled: isSortingEnabled
-				}"
+				draggable=".chan"
+				ghost-class="chan-placeholder"
+				:group="network.uuid"
+				:disabled="isSortingEnabled"
 				:list="network.channels"
 				class="channels"
 				@change="onChannelSort"
